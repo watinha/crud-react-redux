@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import post_reducer from '../reducers/post_reducer';
+import { Provider } from 'react-redux';
+
 import ReactTestUtils from 'react-dom/test-utils';
 import PostComponent from './post.component';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
-    let component = <PostComponent />,
+    let store = createStore(post_reducer),
+        component = <Provider store={store}><PostComponent /></Provider>,
         divs = null, ul = null, input = null, button = null;
     ReactDOM.render(component, div);
     divs = div.querySelectorAll('div.posts');
@@ -20,7 +25,8 @@ it('renders without crashing', () => {
 
 it('includes new posts', () => {
     const div = document.createElement('div');
-    let component = <PostComponent />,
+    let store = createStore(post_reducer),
+        component = <Provider store={store}><PostComponent /></Provider>,
         button = null, input = null, li = null;
     ReactDOM.render(component, div);
     input = div.querySelector('input');
@@ -38,7 +44,8 @@ it('includes new posts', () => {
 
 it('includes more posts', () => {
     const div = document.createElement('div');
-    let component = <PostComponent />,
+    let store = createStore(post_reducer),
+        component = <Provider store={store}><PostComponent /></Provider>,
         button = null, input = null, li = null;
     ReactDOM.render(component, div);
     input = div.querySelector('input');
@@ -60,7 +67,8 @@ it('includes more posts', () => {
 
 it('should not include empty posts', () => {
     const div = document.createElement('div');
-    let component = <PostComponent />,
+    let store = createStore(post_reducer),
+        component = <Provider store={store}><PostComponent /></Provider>,
         button = null, input = null, li = null;
     ReactDOM.render(component, div);
     input = div.querySelector('input');
