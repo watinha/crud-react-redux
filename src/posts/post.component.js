@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import PostCreator from '../action_creators/posts.creator';
+
 class PostComponent extends React.Component {
     constructor (props) {
         super(props);
@@ -11,10 +13,7 @@ class PostComponent extends React.Component {
 
     add () {
         if (this.state.new_post.length === 0) return ;
-        this.props.dispatch({
-            type: 'NEW_POST',
-            post: this.state.new_post
-        });
+        this.props.dispatch(PostCreator.add(this.state.new_post));
         this.setState({
             new_post: ''
         });
