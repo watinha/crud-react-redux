@@ -62,8 +62,15 @@ workflows:
     jobs:
       - test
       - coverage:
-        requires:
-          - test
+          requires:
+            - test
+          filters:
+            branches:
+                only: master
+
       - build:
-        requires:
-          - coverage
+          requires:
+            - coverage
+          filters:
+            branches:
+              only: master
