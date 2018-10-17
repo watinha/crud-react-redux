@@ -15,5 +15,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "jest": { "collectCoverageFrom": ["src/**/*.js", "!src/index.js", "!src/registerServiceWorker.js"] }
+  "jest": {
+      "collectCoverageFrom": ["src/**/*.js", "!src/index.js", "!src/registerServiceWorker.js"],
+      "coverageThreshold": {"global": { "lines": 100}}
+  }
 }
