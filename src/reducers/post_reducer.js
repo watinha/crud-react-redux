@@ -6,6 +6,7 @@ export default (state = {posts: []}, action) => {
             return Object.assign({}, state, {
                 posts: state.posts.concat([action.post])
             });
+        default:
+            return Object.assign({}, state);
     }
-    return state;
 };

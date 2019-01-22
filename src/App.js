@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import PostComponent from './posts/post.component';
+import store from './store/index';
+import { Provider } from 'react-redux';
 
 class App extends Component {
   render() {
@@ -12,7 +14,9 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <div>
-            <PostComponent />
+            <Provider store={store}>
+                <PostComponent />
+            </Provider>
         </div>
       </div>
     );
