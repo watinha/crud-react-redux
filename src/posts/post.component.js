@@ -13,7 +13,7 @@ class PostComponent extends React.Component {
 
     add () {
         if (this.state.new_post.length === 0) return ;
-        this.props.dispatch(PostCreator.add(this.state.new_post));
+        this.props.add_post(this.state.new_post);
         this.setState({
             new_post: ''
         });
@@ -41,4 +41,10 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(PostComponent);
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        add_post: (new_post) => dispatch(PostCreator.add(new_post))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostComponent);
